@@ -1,12 +1,7 @@
-from flask import Flask
+#!/usr/bin/env python
+from apps import app
 from werkzeug.contrib.fixers import ProxyFix
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return "hello world!"
-
-app.wsgi_app = ProxyFix(app.wsgi_app)
 
 if __name__ == "main":
+    app.wsgi_app = ProxyFix(app.wsgi_app)
     app.run()
