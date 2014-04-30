@@ -1,8 +1,12 @@
 .column {
     height: 90%;
-    position: relative;
 }
 
+.column-content {
+    position: relative;
+    display: block;
+    height: 100%;
+}
 #pic-div {
     position: absolute;
     bottom: 20px;

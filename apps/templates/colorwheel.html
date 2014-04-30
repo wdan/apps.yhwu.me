@@ -10,14 +10,18 @@
 <div class="main container">
     <div class="ui two column page divided grid">
 	<div class="center aligned column">
-	    <canvas id="image" width=0 height=0>
-	    </canvas>
-	    <div class="ui blue button" id="pic-div">
-		<input type="file" id="pic-button"/>
-		Load a picture
+	    <div class="column-content">
+		<canvas id="image" width=0 height=0>
+		</canvas>
+		<div class="ui blue button" id="pic-div">
+		    <input type="file" id="pic-button"/>
+		    Load a picture
+		</div>
 	    </div>
 	</div>
-	<div class="center aligned column" id="vis">
+	<div class="center aligned column">
+	    <div class="column-content" id="vis">
+	    </div>
 	</div>
     </div>
 </div>
