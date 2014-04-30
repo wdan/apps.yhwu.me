@@ -165,6 +165,8 @@ function loadImage(data) {
     canvas.width = canvas.width;
     var ctx = canvas.getContext('2d');
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = image.width;
+    canvas.height = image.height;
     ctx.canvas.width = image.width;
     ctx.canvas.height = image.height;
     ctx.drawImage(image, 0, 0);
