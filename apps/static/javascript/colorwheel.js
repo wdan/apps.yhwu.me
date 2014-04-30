@@ -160,17 +160,18 @@ function rgb2hsl(r, g, b) {
 
 function loadImage(data) {
     var image = new Image();
+    image.addEventListener('load', function() {
+        var canvas = document.getElementById('image');
+        canvas.width = canvas.width;
+        canvas.width = image.width;
+        canvas.height = image.height;
+        var ctx = canvas.getContext('2d');
+        ctx.canvas.width = image.width;
+        ctx.canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+        processImageData(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    }, false);
     image.src = data.target.result;
-    var canvas = document.getElementById('image');
-    canvas.width = canvas.width;
-    var ctx = canvas.getContext('2d');
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.width = image.width;
-    canvas.height = image.height;
-    ctx.canvas.width = image.width;
-    ctx.canvas.height = image.height;
-    ctx.drawImage(image, 0, 0);
-    processImageData(ctx.getImageData(0, 0, image.width, image.height));
 }
 
 //drawOriginal();
