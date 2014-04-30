@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block body %}
+<link rel="stylesheet" href="{{ static('css/colorwheel.css') }}">
+<div class="ui fixed transparent inverted menu">
+    <div class="container" id="header">
+	<div class="title item"><b>Colorwheel</b></div>
+    </div>
+</div>
+<div class="main container">
+    <div class="ui two column divided grid">
+	<div class="center aligned column">
+	    <img id="image" src="">
+	    <div class="ui blue button" id="pic-div">
+		<input type="file" id="pic-button"/>
+		Load a picture
+	    </div>
+	</div>
+	<div class="center aligned column" id="vis">
+	</div>
+    </div>
+</div>
+
+{% endblock %}
