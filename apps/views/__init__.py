@@ -12,3 +12,7 @@ def apps_homepage():
 @app.route('/colorwheel')
 def colorwheel():
     return render_template('colorwheel.html')
+
+@app.route('/lm')
+def lm():
+    return render_template('lm.html')
