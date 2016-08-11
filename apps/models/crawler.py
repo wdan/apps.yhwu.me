@@ -1,4 +1,5 @@
 import requests
+import sys
 import time
 import random
 from datetime import date, timedelta as td
@@ -15,7 +16,7 @@ class Crawler():
                 3: 'mars',
                 4: 'avril',
                 5: 'mai',
-                6: 'june',
+                6: 'juin',
                 7: 'juillet',
                 8: 'aout',
                 9: 'septembre',
@@ -45,13 +46,17 @@ class Crawler():
 
     @classmethod
     def parse_daylight(cls, soup):
-        recap_day = soup.find_all('table', class_='tableau-recap-day')
-        daylight_time_str = recap_day[0].contents[7].contents[3].text
-        daylight_time_list = daylight_time_str.split(' ')
-        hours = int(daylight_time_list[0][:-1])
-        mins = int(daylight_time_list[1][:-3])
-        total_mins = hours * 60 + mins
-        return total_mins
+        try:
+            recap_day = soup.find_all('table', class_='tableau-recap-day')
+            daylight_time_str = recap_day[0].contents[7].contents[3].text
+            daylight_time_list = daylight_time_str.split(' ')
+            hours = int(daylight_time_list[0][:-1])
+            mins = int(daylight_time_list[1][:-3])
+            total_mins = hours + mins / 60.0
+            return total_mins
+        except:
+            print sys.exc_info()
+            return 0.0
 
     @classmethod
     def parse_avg_wind_speed(cls, soup):
@@ -66,8 +71,12 @@ class Crawler():
             idName = 'cdata' + str(i)
             hour_data = soup.find_all('tr', id=idName)[0]
             avg_hour_wind_speed = hour_data.contents[wind_index].text.split('(')[0].split(' ')[0]
-            avg_hour_speed_list.append(float(avg_hour_wind_speed))
-        avg_day_wind_speed = reduce(lambda x, y: x + y, avg_hour_speed_list) / len(avg_hour_speed_list)
+            if avg_hour_wind_speed == "":
+                avg_hour_speed_list.append(0.0)
+            else:
+                avg_hour_speed_list.append(float(avg_hour_wind_speed))
+        # avg_day_wind_speed = reduce(lambda x, y: x + y, avg_hour_speed_list) / len(avg_hour_speed_list)
+        avg_day_wind_speed = reduce(lambda x, y: x + y, avg_hour_speed_list)
         return avg_day_wind_speed
 
 
@@ -89,16 +98,16 @@ class Crawler():
         daily_data = cls.parse_content(content)
         return daily_data
 
-    if __name__ == '__main__':
-        date_list = gen_date_list(7, 1, 2016, 8, 8, 2016)
-        for date_tuple in date_list:
-            # time.sleep(random.randint(0, 3))
-            day = str(date_tuple[0])
-            month = str(date_tuple[1])
-            year = str(date_tuple[2])
-            url = gen_url(day, month, year)
-            content = get_content(url)
-            daily_data = parse_content(content)
-            daily_sunshine_time = str(daily_data[0])
-            daily_avg_wind_speed = str(daily_data[1])
-            print "%s-%s-%s: sunshine: %s mins; avg. wind speed: %s km/h." % (year, month, day, daily_sunshine_time, daily_avg_wind_speed)
+if __name__ == '__main__':
+    date_list = Crawler.gen_date_list(1, 6, 2016, 10, 6, 2016)
+    for date_tuple in date_list:
+        day = str(date_tuple[0])
+        month = str(date_tuple[1])
+        year = str(date_tuple[2])
+        url = Crawler.gen_url(day, month, year)
+        content = Crawler.get_content(url)
+        daily_data = Crawler.parse_content(content)
+        daily_sunshine_time = str(daily_data[0])
+        daily_avg_wind_speed = str(daily_data[1])
+        print "%s-%s-%s: sunshine: %s h; wind speed: %s km/day." % (year, month, day, daily_sunshine_time, daily_avg_wind_speed)
+        time.sleep(5)
