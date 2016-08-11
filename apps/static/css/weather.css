@@ -1,0 +1,52 @@
+.column {
+    height: 90%;
+}
+
+.column-content {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+#pic-div {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: 200px;
+    margin: auto;
+}
+
+/*#pic-div input{*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*opacity: 0.0;*/
+    /*filter: alpha(opacity=0);*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*svg {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin: auto;*/
+/*}*/
+
+/*#image {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin: auto;*/
+    /*max-width: 90%;*/
+    /*max-height: 70%;*/
+    /*-webkit-border-radius: 10px;*/
+    /*-moz-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+    /*border: 1px solid rgba(0, 0, 0, 0.3);*/
+/*}*/
