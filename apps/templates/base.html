@@ -12,16 +12,19 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ static('css/semantic.css') }}">
     <link rel="stylesheet" href="{{ static('css/main.css') }}">
     <link rel="shortcut icon" href="{{ static('favicon.ico') }}">
-
 </head>
 <body>
     <!--[if lt IE 7]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="{{ static('javascript/d3.min.js') }}"></script>
+    <script src="{{ static('javascript/semantic.js') }}"></script>
 
     {% block body %}
     {% endblock %}
@@ -36,11 +39,8 @@
 
     <!-- build:js scripts/plugins.js -->
     <!--<scripts src="http://code.jquery.com/jquery-1.9.0.js"></scripts>-->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-    <script src="{{ static('javascript/d3.min.js') }}"></script>
-    <script src="{{ static('javascript/semantic.js') }}"></script>
-    <script src="{{ static('javascript/colorwheel.js') }}"></script>
+        <!--<script src="{{ static('javascript/colorwheel.js') }}"></script>-->
     <!-- endbuild -->
 
 </body>

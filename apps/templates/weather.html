@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block body %}
+<link rel="stylesheet" href="{{ static('css/weather.css') }}">
+<script src="{{ static('javascript/weather.js') }}"></script>
+<div class="ui fixed transparent inverted menu">
+    <div class="container" id="header">
+	<div class="title item"><b>ColorWheel</b></div>
+    </div>
+</div>
+<div class="main container">
+    <div class="ui two column page divided grid">
+	<div class="center aligned column">
+	    <div class="column-content">
+		<p> Date: <input type="text" id="datepicker"></p>
+	    </div>
+	</div>
+	<div class="center aligned column">
+	    <div class="column-content" id="vis" style="margin-top: 15px">
+		<div>
+		    <label>Date:</label> <p id="date"> </p>
+		</div>
+		<div>
+		    <label>Sunshine:</label> <p id="sunshine"> </p>
+		</div>
+		<div>
+		    <label>Avg. wind speed:</label> <p id="wind"> </p>
+		</div>
+	    </div>
+	</div>
+    </div>
+</div>
+{% endblock %}
