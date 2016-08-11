@@ -55,7 +55,7 @@ class Crawler():
             total_mins = hours + mins / 60.0
             return total_mins
         except:
-            print sys.exc_info()
+            print(sys.exc_info())
             return 0.0
 
     @classmethod
@@ -78,7 +78,6 @@ class Crawler():
         # avg_day_wind_speed = reduce(lambda x, y: x + y, avg_hour_speed_list) / len(avg_hour_speed_list)
         avg_day_wind_speed = reduce(lambda x, y: x + y, avg_hour_speed_list)
         return avg_day_wind_speed
-
 
     @classmethod
     def gen_date_list(cls, stDay, stMon, stYear, edDay, edMon, edYear):
